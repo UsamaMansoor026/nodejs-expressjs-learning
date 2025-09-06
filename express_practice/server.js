@@ -6,21 +6,6 @@ const PORT = 3000;
 
 app.use(bodyParser.urlencoded());
 
-app.use((req, res, next) => {
-  console.log("First dummy middleware", req.url, req.method);
-  next();
-});
-
-app.use((req, res, next) => {
-  console.log("Second dummy middleware", req.url, req.method);
-  next();
-});
-
-/* app.use((req, res, next) => {
-  console.log("Third middleware", req.url, req.method);
-  res.send("<h1>This is the response from the middleware</h1>");
-}); */
-
 app.get("/", (req, res, next) => {
   console.log("Handling / for GET", req.url, req.method);
   res.send("<h1>This is the response from the GET /</h1>");
