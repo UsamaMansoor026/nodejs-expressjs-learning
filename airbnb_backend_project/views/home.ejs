@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Airbnb Home</title>
+    <link rel="stylesheet" href="./output.css" />
+  </head>
+  <body>
+    <%- include('partials/header') %>
+    <main class="max-w-2xl mx-auto mt-16 shadow-md shadow-teal-100 p-8">
+      <h1 class="text-3xl text-teal-500 font-bold text-center">
+        Welcome to the Airbnb Backend!
+      </h1>
+      <h4 class="my-3 font-medium text-gray-600">
+        Here are out registered homes:
+      </h4>
+      <ul class="flex flex-col space-y-2 list-disc">
+        <% registeredHomes.forEach(home => { %>
+        <li class="shadow-xs shadow-teal-200 py-2">
+          <h5><%= home.homeName %></h5>
+        </li>
+        <% }) %>
+      </ul>
+    </main>
+  </body>
+</html>

@@ -4,11 +4,15 @@ const rootDir = require("../utils/path");
 const path = require("path");
 
 hostRouter.get("/add-home", (req, res) => {
-  res.sendFile(path.join(rootDir, "views", "addHome.html"));
+  res.render("addHome");
 });
+
+const registeredHomes = [];
 
 hostRouter.post("/add-home", (req, res) => {
-  res.sendFile(path.join(rootDir, "views", "homeAdded.html"));
+  registeredHomes.push({ homeName: req.body.housename });
+  res.render("homeAdded");
 });
 
-module.exports = hostRouter;
+exports.hostRouter = hostRouter;
+exports.registeredHomes = registeredHomes;

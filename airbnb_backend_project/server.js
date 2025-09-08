@@ -1,11 +1,13 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const userRouter = require("./routes/userRouter");
-const hostRouter = require("./routes/hostRouter");
+const { hostRouter } = require("./routes/hostRouter");
 const rootDir = require("./utils/path");
 const path = require("path");
 
 const app = express();
+app.set("view engine", "ejs");
+app.set("views", "views");
 const PORT = 3000;
 
 app.use(bodyParser.urlencoded());
