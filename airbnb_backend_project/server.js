@@ -5,12 +5,11 @@ const hostRouter = require("./routes/hostRouter");
 const rootDir = require("./utils/path");
 const path = require("path");
 
-// __dirname is the constant which represent the current directory in this case it is routes folder so we have to move one folder up so we use ../ and then the name of folder where html files are present that is views
-
 const app = express();
 const PORT = 3000;
 
 app.use(bodyParser.urlencoded());
+app.use(express.static(path.join(rootDir, "public")));
 
 app.use(userRouter);
 app.use("/host", hostRouter);
