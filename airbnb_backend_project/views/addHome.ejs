@@ -9,17 +9,75 @@
   <body>
     <%- include('partials/header') %>
     <main
-      class="max-w-2xl mx-auto text-center mt-16 shadow-md shadow-teal-100 p-8 space-y-3"
+      class="max-w-2xl mx-auto mt-16 shadow-md shadow-teal-100 p-8 space-y-3"
     >
-      <h1 class="text-teal-600 font-semibold">Register your home here...</h1>
-      <form action="/host/add-home" method="POST">
-        <input
-          type="text"
-          name="housename"
-          placeholder="Home Name"
-          required
-          class="block border border-teal-500 w-full px-4 py-3 rounded outline-none"
-        /><br />
+      <h1 class="text-teal-600 font-semibold text-center">
+        Register your home here...
+      </h1>
+      <form
+        action="/host/add-home"
+        method="POST"
+        class="flex flex-col gap-4 mt-5 shadow-xl shadow-teal-100 p-8"
+      >
+        <!-- Input Container -->
+        <div class="flex flex-col gap-1 text-gray-600">
+          <label for="housename">House Name:</label>
+          <input
+            type="text"
+            name="housename"
+            placeholder="Home Name"
+            required
+            class="block border border-teal-500 w-full px-4 py-3 rounded outline-none"
+          />
+        </div>
+
+        <!-- Input Container -->
+        <div class="flex flex-col gap-1 text-gray-600">
+          <label for="price">Price per Night:</label>
+          <input
+            type="number"
+            name="price"
+            placeholder="Price per night"
+            required
+            class="block border border-teal-500 w-full px-4 py-3 rounded outline-none"
+          />
+        </div>
+
+        <!-- Input Container -->
+        <div class="flex flex-col gap-1 text-gray-600">
+          <label for="location">Location:</label>
+          <input
+            type="text"
+            name="location"
+            placeholder="House location"
+            required
+            class="block border border-teal-500 w-full px-4 py-3 rounded outline-none"
+          />
+        </div>
+
+        <!-- Input Container -->
+        <div class="flex flex-col gap-1 text-gray-600">
+          <label for="rating">Rating:</label>
+          <input
+            type="text"
+            name="rating"
+            placeholder="Rate from 1 - 5"
+            required
+            class="block border border-teal-500 w-full px-4 py-3 rounded outline-none"
+          />
+        </div>
+
+        <!-- Input Container -->
+        <div class="flex flex-col gap-1 text-gray-600">
+          <label for="picture">House Picture:</label>
+          <input
+            type="text"
+            name="picture"
+            placeholder="House picture URL"
+            required
+            class="block border border-teal-500 w-full px-4 py-3 rounded outline-none"
+          />
+        </div>
         <input
           type="submit"
           value="Add Home"
