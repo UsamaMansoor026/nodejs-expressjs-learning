@@ -1,12 +1,32 @@
 <header class="p-8 bg-teal-200 space-x-3">
   <a
     href="/"
+    class="<%= currentPage === 'index' ? '!bg-teal-700 text-white':'hover:bg-teal-700' %> px-4 py-1.5"
+    >airbnb</a
+  >
+  <a
+    href="/homes"
     class="<%= currentPage === 'Home' ? '!bg-teal-700 text-white':'hover:bg-teal-700' %> px-4 py-1.5"
-    >Home</a
+    >Homes-List</a
   >
   <a
     href="/host/add-home"
     class="<%= currentPage === 'addHome' ? '!bg-teal-700 text-white':'hover:!bg-teal-700 hover:text-white' %> px-4 py-1.5"
     >Add Home</a
+  >
+  <a
+    href="/bookings"
+    class="<%= currentPage === 'bookings' ? '!bg-teal-700 text-white':'hover:!bg-teal-700 hover:text-white' %> px-4 py-1.5"
+    >Bookings</a
+  >
+  <a
+    href="/fav-list"
+    class="<%= currentPage === 'fav-list' ? '!bg-teal-700 text-white':'hover:!bg-teal-700 hover:text-white' %> px-4 py-1.5"
+    >Favourite List</a
+  >
+  <a
+    href="/host/host-home-list"
+    class="<%= currentPage === 'host-homes' ? '!bg-teal-700 text-white':'hover:!bg-teal-700 hover:text-white' %> px-4 py-1.5"
+    >Host Homes</a
   >
 </header>

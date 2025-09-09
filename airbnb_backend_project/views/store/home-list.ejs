@@ -7,13 +7,13 @@
     <link rel="stylesheet" href="./output.css" />
   </head>
   <body>
-    <%- include('partials/header') %>
+    <%- include('../partials/header') %>
     <main class="max-w-7xl mx-auto mt-16 shadow-md shadow-teal-100 p-8">
       <h1 class="text-3xl text-teal-500 font-bold text-center">
-        Welcome to the Airbnb Backend!
+        Welcome to the Airbnb Homes List!
       </h1>
       <h4 class="my-3 font-medium text-gray-600">
-        Here are out registered homes:
+        Here are our registered homes:
       </h4>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
         <% registeredHomes.forEach(home => { %>
@@ -32,11 +32,18 @@
             <h3 class="font-semibold text-lg"><%= home.housename %></h3>
             <h3 class="text-sm text-gray-500"><%= home.location %></h3>
             <h5 class="font-semibold inline-block">
-              <%= home.price %> / night
+              Rs <%= home.price %> / night
             </h5>
             <span class="text-xs text-gray-600 ml-16"
               >Rating: <%= home.rating %></span
+            ><br /><br />
+
+            <button
+              type="button"
+              class="bg-teal-500 p-2 w-full cursor-pointer duration-300 hover:bg-teal-400 rounded"
             >
+              Book Now
+            </button>
           </div>
         </article>
         <% }) %>

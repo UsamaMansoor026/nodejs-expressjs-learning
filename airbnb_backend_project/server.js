@@ -1,10 +1,10 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const userRouter = require("./routes/userRouter");
 const { hostRouter } = require("./routes/hostRouter");
 const rootDir = require("./utils/path");
 const path = require("path");
 const errorController = require("./controllers/404Controller");
+const storeRouter = require("./routes/storeRouter");
 
 const app = express();
 app.set("view engine", "ejs");
@@ -14,7 +14,7 @@ const PORT = 3000;
 app.use(bodyParser.urlencoded());
 app.use(express.static(path.join(rootDir, "public")));
 
-app.use(userRouter);
+app.use(storeRouter);
 app.use("/host", hostRouter);
 
 /* Custom 404 not found page */

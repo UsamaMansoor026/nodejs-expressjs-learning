@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Airbnb Home</title>
+    <link rel="stylesheet" href="/output.css" />
+  </head>
+  <body>
+    <%- include('../partials/header') %>
+    <main class="max-w-7xl mx-auto mt-16 shadow-md shadow-teal-100 p-8">
+      <h1 class="text-3xl text-teal-500 font-bold text-center">
+        Host Homes List
+      </h1>
+      <h4 class="my-3 font-medium text-gray-600">Host homes list:</h4>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+        <% registeredHomes.forEach(home => { %>
+        <article class="shadow-xs shadow-teal-200 w-full">
+          <!-- Image -->
+          <div class="w-full h-64 overflow-hidden">
+            <img
+              src="<%= home.picture %>"
+              alt="<%= home.housename %>"
+              class="w-full h-full object-cover hover:scale-110 duration-300 cursor-pointer"
+            />
+          </div>
+
+          <!-- Content -->
+          <div class="p-5">
+            <h3 class="font-semibold text-lg"><%= home.housename %></h3>
+            <h3 class="text-sm text-gray-500"><%= home.location %></h3>
+            <h5 class="font-semibold inline-block">
+              Rs <%= home.price %> / night
+            </h5>
+            <span class="text-xs text-gray-600 ml-16"
+              >Rating: <%= home.rating %></span
+            >
+            <div
+              class="mt-4 flex justify-between items-center gap-5 text-white"
+            >
+              <button
+                type="button"
+                class="bg-blue-500 p-2 w-full cursor-pointer duration-300 hover:bg-blue-400 rounded"
+              >
+                Edit
+              </button>
+              <button
+                type="button"
+                class="bg-red-500 p-2 w-full cursor-pointer duration-300 hover:bg-red-400 rounded"
+              >
+                Delete
+              </button>
+            </div>
+          </div>
+        </article>
+        <% }) %>
+      </div>
+    </main>
+  </body>
+</html>
