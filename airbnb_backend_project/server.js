@@ -4,6 +4,7 @@ const userRouter = require("./routes/userRouter");
 const { hostRouter } = require("./routes/hostRouter");
 const rootDir = require("./utils/path");
 const path = require("path");
+const errorController = require("./controllers/404Controller");
 
 const app = express();
 app.set("view engine", "ejs");
@@ -17,9 +18,7 @@ app.use(userRouter);
 app.use("/host", hostRouter);
 
 /* Custom 404 not found page */
-app.use((req, res, next) => {
-  res.status(404).sendFile(path.join(rootDir, "views", "404.html"));
-});
+app.use(errorController.get404);
 
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
