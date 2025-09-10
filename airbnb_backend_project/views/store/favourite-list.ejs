@@ -13,10 +13,11 @@
         Favourite List
       </h1>
       <h4 class="my-3 font-medium text-gray-600">
-        Here are our registered homes:
+        Here is your Favourite homes:
       </h4>
+
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-        <% registeredHomes.forEach(home => { %>
+        <% favourites.forEach(home => { %>
         <article class="shadow-xs shadow-teal-200 w-full">
           <!-- Image -->
           <div class="w-full h-64 overflow-hidden">
@@ -38,12 +39,11 @@
               >Rating: <%= home.rating %></span
             ><br /><br />
 
-            <button
-              type="button"
-              class="bg-teal-500 p-2 w-full cursor-pointer duration-300 hover:bg-teal-400 rounded"
+            <a
+              href="/homes/<%= home.id %>"
+              class="!bg-blue-500 p-2 w-full cursor-pointer duration-300 hover:!bg-blue-400 rounded block text-center mb-3"
+              >Details</a
             >
-              Book Now
-            </button>
           </div>
         </article>
         <% }) %>

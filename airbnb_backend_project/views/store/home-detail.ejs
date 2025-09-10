@@ -13,7 +13,10 @@
         Your Home Detail:
       </h1>
 
-      <div class="overflow-hidden mt-5">
+      <!-- Add to Fav -->
+      <div class="w-[200px]"><%- include("../partials/favourites.ejs") %></div>
+
+      <div class="overflow-hidden mt-2">
         <img
           src="<%= home.picture %>"
           alt="<%= home.housename %>"
