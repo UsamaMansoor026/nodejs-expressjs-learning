@@ -18,6 +18,20 @@ exports.getHomes = (req, res) => {
   });
 };
 
+exports.getHome = (req, res) => {
+  const { homeId } = req.params;
+  Home.findById(homeId, (home) => {
+    if (!home) {
+      return res.redirect("/homes");
+    }
+    res.render("store/home-detail", { home: home, currentPage: "Home" });
+  });
+  // Home.fetchAll((registeredHomes) => {
+  //   const home = registeredHomes.find((home) => home.id === homeId);
+  //   res.render("store/home-detail", { home: home, currentPage: "Home" });
+  // });
+};
+
 exports.getBookings = (req, res) => {
   res.render("store/bookings", { currentPage: "bookings" });
 };

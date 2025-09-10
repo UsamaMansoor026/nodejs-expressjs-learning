@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home Detail</title>
+    <link rel="stylesheet" href="/output.css" />
+  </head>
+  <body>
+    <%- include('../partials/header') %>
+    <main class="max-w-3xl mx-auto mt-16 shadow-md shadow-teal-100 p-8">
+      <h1 class="text-center text-3xl text-teal-500 font-bold">
+        Your Home Detail:
+      </h1>
+
+      <div class="overflow-hidden mt-5">
+        <img
+          src="<%= home.picture %>"
+          alt="<%= home.housename %>"
+          class="w-full h-80 object-cover"
+        />
+      </div>
+
+      <div class="mt-5">
+        <div class="flex flex-col space-y-1">
+          <p class="text-sm text-gray-600">Name:</p>
+          <h3 class="font-semibold text-xl"><%= home.housename %></h3>
+        </div>
+        <hr class="my-3 !h-[1px] border-none bg-gray-300" />
+
+        <!-- Location -->
+        <div class="flex flex-col space-y-1">
+          <p class="text-sm text-gray-600">Location:</p>
+          <h3 class="font-semibold text-xl"><%= home.location %></h3>
+        </div>
+        <hr class="my-3 !h-[1px] border-none bg-gray-300" />
+
+        <!-- Price per night -->
+        <div class="flex flex-col space-y-1">
+          <p class="text-sm text-gray-600">Price:</p>
+          <h3 class="font-semibold text-xl">
+            Rs <%= home.price %>
+            <span class="text-sm text-gray-600">per night</span>
+          </h3>
+        </div>
+        <hr class="my-3 !h-[1px] border-none bg-gray-300" />
+
+        <!-- Rating -->
+        <div class="flex flex-col space-y-1">
+          <p class="text-sm text-gray-600">Rating:</p>
+          <h3 class="font-semibold text-xl"><%= home.rating %> / 5</h3>
+        </div>
+        <hr class="my-3 !h-[1px] border-none bg-gray-300" />
+      </div>
+    </main>
+  </body>
+</html>
