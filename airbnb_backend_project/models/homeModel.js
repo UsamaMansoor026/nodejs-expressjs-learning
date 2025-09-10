@@ -1,6 +1,7 @@
 const path = require("path");
 const fs = require("fs");
 const rootDir = require("../utils/path");
+const Favourite = require("./favouriteModel");
 
 module.exports = class Home {
   constructor(housename, price, location, rating, picture) {
@@ -12,9 +13,15 @@ module.exports = class Home {
   }
 
   save() {
-    this.id = Math.random().toString();
     Home.fetchAll((registeredHomes) => {
-      registeredHomes.push(this);
+      if (this.id) {
+        registeredHomes = registeredHomes.map((home) =>
+          home.id === this.id ? this : home
+        );
+      } else {
+        this.id = Math.random().toString();
+        registeredHomes.push(this);
+      }
       const filePath = path.join(rootDir, "data", "homes.json");
       fs.writeFile(filePath, JSON.stringify(registeredHomes), (err) => {
         console.log("Error Occured: ", err);
@@ -45,6 +52,16 @@ module.exports = class Home {
     Home.fetchAll((homes) => {
       const home = homes.find((home) => home.id === homeId);
       callback(home);
+    });
+  }
+
+  static deleteById(homeId, callback) {
+    Home.fetchAll((homes) => {
+      const filteredhomes = homes.filter((home) => home.id !== homeId);
+      const filePath = path.join(rootDir, "data", "homes.json");
+      fs.writeFile(filePath, JSON.stringify(filteredhomes), (error) => {
+        Favourite.deleteById(homeId, callback);
+      });
     });
   }
 };

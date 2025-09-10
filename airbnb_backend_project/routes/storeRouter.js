@@ -8,5 +8,6 @@ storeRouter.get("/bookings", storeController.getBookings);
 storeRouter.get("/fav-list", storeController.getFavList);
 storeRouter.get("/homes/:homeId", storeController.getHome);
 storeRouter.post("/favourite", storeController.addToFav);
+storeRouter.post("/favourite/delete/:homeId", storeController.removeFromFav);
 
 module.exports = storeRouter;

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Airbnb | Add Your Home</title>
+    <link rel="stylesheet" href="/output.css" />
+  </head>
+  <body>
+    <%- include('../partials/header') %>
+    <main
+      class="max-w-2xl mx-auto mt-16 shadow-md shadow-teal-100 p-8 space-y-3"
+    >
+      <h1 class="text-teal-600 font-semibold text-center">
+        <%= editing ? "Edit" : "Register" %> your home here...
+      </h1>
+      <form
+        action="/host/<%= editing ? 'edit-home' : 'add-home' %>"
+        method="POST"
+        class="flex flex-col gap-4 mt-5 shadow-xl shadow-teal-100 p-8"
+      >
+        <input type="hidden" name="id" value="<%= editing ? home.id : '' %>" />
+        <!-- Input Container -->
+        <div class="flex flex-col gap-1 text-gray-600">
+          <label for="housename">House Name:</label>
+          <input
+            type="text"
+            name="housename"
+            value="<%= editing ? home.housename : '' %>"
+            placeholder="Home Name"
+            required
+            class="block border border-teal-500 w-full px-4 py-3 rounded outline-none"
+          />
+        </div>
+
+        <!-- Input Container -->
+        <div class="flex flex-col gap-1 text-gray-600">
+          <label for="price">Price per Night:</label>
+          <input
+            type="number"
+            name="price"
+            value="<%= editing ? home.price : '' %>"
+            placeholder="Price per night"
+            required
+            class="block border border-teal-500 w-full px-4 py-3 rounded outline-none"
+          />
+        </div>
+
+        <!-- Input Container -->
+        <div class="flex flex-col gap-1 text-gray-600">
+          <label for="location">Location:</label>
+          <input
+            type="text"
+            name="location"
+            value="<%= editing ? home.location : '' %>"
+            placeholder="House location"
+            required
+            class="block border border-teal-500 w-full px-4 py-3 rounded outline-none"
+          />
+        </div>
+
+        <!-- Input Container -->
+        <div class="flex flex-col gap-1 text-gray-600">
+          <label for="rating">Rating:</label>
+          <input
+            type="text"
+            name="rating"
+            value="<%= editing ? home.rating : '' %>"
+            placeholder="Rate from 1 - 5"
+            required
+            class="block border border-teal-500 w-full px-4 py-3 rounded outline-none"
+          />
+        </div>
+
+        <!-- Input Container -->
+        <div class="flex flex-col gap-1 text-gray-600">
+          <label for="picture">House Picture:</label>
+          <input
+            type="text"
+            name="picture"
+            value="<%= editing ? home.picture : '' %>"
+            placeholder="House picture URL"
+            required
+            class="block border border-teal-500 w-full px-4 py-3 rounded outline-none"
+          />
+        </div>
+        <button
+          type="submit"
+          class="bg-teal-500 w-full px-4 py-3 rounded duration-300 hover:bg-teal-700 hover:text-white cursor-pointer"
+        >
+          <%= editing ? "Update" : "Register" %>
+        </button>
+      </form>
+    </main>
+  </body>
+</html>

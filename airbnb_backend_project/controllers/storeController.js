@@ -62,3 +62,14 @@ exports.addToFav = (req, res) => {
     res.redirect("/fav-list");
   });
 };
+
+exports.removeFromFav = (req, res) => {
+  const { homeId } = req.params;
+
+  Favourite.deleteById(homeId, (error) => {
+    if (error) {
+      console.log("Error while removing from fav: ", error);
+    }
+    res.redirect("/fav-list");
+  });
+};
