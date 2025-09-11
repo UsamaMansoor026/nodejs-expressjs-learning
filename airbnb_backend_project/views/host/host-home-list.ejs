@@ -39,13 +39,13 @@
               class="mt-4 flex justify-between items-center gap-5 text-white"
             >
               <a
-                href="/host/edit-home/<%= home.id %>?editing=true"
+                href="/host/edit-home/<%= home._id %>?editing=true"
                 class="!bg-blue-500 p-2 w-full cursor-pointer duration-300 hover:!bg-blue-400 rounded text-center"
               >
                 Edit
               </a>
               <form
-                action="/host/delete-home/<%= home.id %>"
+                action="/host/delete-home/<%= home._id %>"
                 method="POST"
                 class="w-full"
               >
