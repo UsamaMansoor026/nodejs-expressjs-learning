@@ -6,11 +6,14 @@ const path = require("path");
 const errorController = require("./controllers/404Controller");
 const storeRouter = require("./routes/storeRouter");
 const { mongoDBConnect } = require("./utils/db");
+const connectToDB = require("./utils/db");
 
 const app = express();
 app.set("view engine", "ejs");
 app.set("views", "views");
 const PORT = 3000;
+
+connectToDB();
 
 app.use(bodyParser.urlencoded());
 app.use(express.static(path.join(rootDir, "public")));
@@ -21,9 +24,6 @@ app.use("/host", hostRouter);
 /* Custom 404 not found page */
 app.use(errorController.get404);
 
-mongoDBConnect(() => {
-  console.log("DB Client connected");
-  app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
-  });
+app.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
 });
