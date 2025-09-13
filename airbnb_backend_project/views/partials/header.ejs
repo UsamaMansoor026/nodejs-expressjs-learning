@@ -1,32 +1,56 @@
-<header class="p-8 bg-teal-200 space-x-3">
-  <a
-    href="/"
-    class="<%= currentPage === 'index' ? '!bg-teal-700 text-white':'hover:bg-teal-700' %> px-4 py-1.5"
-    >airbnb</a
-  >
-  <a
-    href="/homes"
-    class="<%= currentPage === 'Home' ? '!bg-teal-700 text-white':'hover:bg-teal-700' %> px-4 py-1.5"
-    >Homes-List</a
-  >
-  <a
-    href="/host/add-home"
-    class="<%= currentPage === 'addHome' ? '!bg-teal-700 text-white':'hover:!bg-teal-700 hover:text-white' %> px-4 py-1.5"
-    >Add Home</a
-  >
-  <a
-    href="/bookings"
-    class="<%= currentPage === 'bookings' ? '!bg-teal-700 text-white':'hover:!bg-teal-700 hover:text-white' %> px-4 py-1.5"
-    >Bookings</a
-  >
-  <a
-    href="/fav-list"
-    class="<%= currentPage === 'fav-list' ? '!bg-teal-700 text-white':'hover:!bg-teal-700 hover:text-white' %> px-4 py-1.5"
-    >Favourite List</a
-  >
-  <a
-    href="/host/host-home-list"
-    class="<%= currentPage === 'host-homes' ? '!bg-teal-700 text-white':'hover:!bg-teal-700 hover:text-white' %> px-4 py-1.5"
-    >Host Homes</a
-  >
+<header class="p-8 bg-teal-200 space-x-3 !flex items-center justify-between">
+  <div>
+    <a
+      href="/"
+      class="<%= currentPage === 'index' ? '!bg-teal-700 text-white':'hover:bg-teal-700' %> px-4 py-1.5"
+      >airbnb</a
+    >
+    <% if (isLoggedIn) { %>
+    <a
+      href="/homes"
+      class="<%= currentPage === 'Home' ? '!bg-teal-700 text-white':'hover:bg-teal-700' %> px-4 py-1.5"
+      >Homes-List</a
+    >
+    <a
+      href="/host/add-home"
+      class="<%= currentPage === 'addHome' ? '!bg-teal-700 text-white':'hover:!bg-teal-700 hover:text-white' %> px-4 py-1.5"
+      >Add Home</a
+    >
+    <a
+      href="/bookings"
+      class="<%= currentPage === 'bookings' ? '!bg-teal-700 text-white':'hover:!bg-teal-700 hover:text-white' %> px-4 py-1.5"
+      >Bookings</a
+    >
+    <a
+      href="/fav-list"
+      class="<%= currentPage === 'fav-list' ? '!bg-teal-700 text-white':'hover:!bg-teal-700 hover:text-white' %> px-4 py-1.5"
+      >Favourite List</a
+    >
+    <a
+      href="/host/host-home-list"
+      class="<%= currentPage === 'host-homes' ? '!bg-teal-700 text-white':'hover:!bg-teal-700 hover:text-white' %> px-4 py-1.5"
+      >Host Homes</a
+    >
+    <% } %>
+  </div>
+
+  <div>
+    <% if (!isLoggedIn) { %>
+    <a
+      href="/auth/login"
+      class="px-6 py-2 !bg-purple-700 text-white duration-300 cursor-pointer rounded hover:!bg-purple-950"
+    >
+      Login
+    </a>
+    <% } else { %>
+    <form action="/auth/logout" method="POST">
+      <button
+        type="submit"
+        class="px-6 py-2 !bg-purple-700 text-white duration-300 cursor-pointer rounded hover:!bg-purple-950"
+      >
+        Logout
+      </button>
+    </form>
+    <% } %>
+  </div>
 </header>

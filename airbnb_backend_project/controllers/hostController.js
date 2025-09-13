@@ -1,7 +1,11 @@
 const Home = require("../models/homeModel");
 
 exports.getAddHome = (req, res) => {
-  res.render("host/edit-home", { currentPage: "addHome", editing: false });
+  res.render("host/edit-home", {
+    currentPage: "addHome",
+    editing: false,
+    isLoggedIn: req.isLoggedIn,
+  });
 };
 
 exports.addHome = (req, res) => {
@@ -24,6 +28,7 @@ exports.getHostHomes = (req, res) => {
     res.render("host/host-home-list", {
       registeredHomes: registeredHomes,
       currentPage: "host-homes",
+      isLoggedIn: req.isLoggedIn,
     });
   });
 };
@@ -42,6 +47,7 @@ exports.getEditHome = (req, res) => {
       currentPage: "host-homes",
       editing: editing,
       home: home,
+      isLoggedIn: req.isLoggedIn,
     });
   });
 };
