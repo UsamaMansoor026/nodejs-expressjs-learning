@@ -1,6 +1,10 @@
+const MONGO_URI =
+  "mongodb+srv://usamadev:6PXWn4dzPtIPhmbK@airbnbbackend.38p3qy9.mongodb.net/airbnb?retryWrites=true&w=majority&appName=airbnbbackend";
+
 const express = require("express");
 const bodyParser = require("body-parser");
-const cookieParser = require("cookie-parser");
+const session = require("express-session");
+const MongoDBStore = require("connect-mongodb-session")(session);
 const { hostRouter } = require("./routes/hostRouter");
 const rootDir = require("./utils/path");
 const path = require("path");
@@ -16,14 +20,25 @@ const PORT = 3000;
 
 connectToDB();
 
+const store = MongoDBStore({
+  uri: MONGO_URI,
+  collection: "sessions",
+});
+
 app.use(bodyParser.urlencoded());
-app.use(cookieParser());
+app.use(
+  session({
+    secret: "Usama Web Developer",
+    resave: false,
+    saveUninitialized: true,
+    store: store,
+  })
+);
 app.use(express.static(path.join(rootDir, "public")));
 
 app.use((req, res, next) => {
-  const isLoggedIn = req.cookies.isLoggedIn;
-  console.log("Cookie isLoggedIN: ", isLoggedIn);
-  req.isLoggedIn = isLoggedIn === "true" ? true : false;
+  console.log("Session: ", req.session, req.session.isLoggedIn);
+  req.isLoggedIn = req.session.isLoggedIn;
   next();
 });
 app.use("/auth", authRouter);
