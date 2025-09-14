@@ -5,6 +5,7 @@ exports.getAddHome = (req, res) => {
     currentPage: "addHome",
     editing: false,
     isLoggedIn: req.isLoggedIn,
+    user: req.session.user,
   });
 };
 
@@ -29,6 +30,7 @@ exports.getHostHomes = (req, res) => {
       registeredHomes: registeredHomes,
       currentPage: "host-homes",
       isLoggedIn: req.isLoggedIn,
+      user: req.session.user,
     });
   });
 };
@@ -48,6 +50,7 @@ exports.getEditHome = (req, res) => {
       editing: editing,
       home: home,
       isLoggedIn: req.isLoggedIn,
+      user: req.session.user,
     });
   });
 };

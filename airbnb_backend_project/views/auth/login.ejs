@@ -13,6 +13,8 @@
     >
       <h1 class="text-center text-lg mb-3">Login to airbnb</h1>
 
+      <%- include('../partials/errors.ejs') %>
+
       <form action="/auth/login" method="post" class="flex flex-col gap-4">
         <div class="flex flex-col space-y-1">
           <label for="email" class="text-sm text-gray-500">Email</label>
@@ -20,6 +22,7 @@
             type="email"
             name="email"
             id="email"
+            value="<%= oldInput.email ? oldInput.email: '' %>"
             placeholder="example@gmai.com"
             required
             class="border border-teal-500 w-full px-4 py-3 rounded outline-none"

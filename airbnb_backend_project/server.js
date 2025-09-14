@@ -37,7 +37,6 @@ app.use(
 app.use(express.static(path.join(rootDir, "public")));
 
 app.use((req, res, next) => {
-  console.log("Session: ", req.session, req.session.isLoggedIn);
   req.isLoggedIn = req.session.isLoggedIn;
   next();
 });

@@ -5,17 +5,13 @@
       class="<%= currentPage === 'index' ? '!bg-teal-700 text-white':'hover:bg-teal-700' %> px-4 py-1.5"
       >airbnb</a
     >
-    <% if (isLoggedIn) { %>
+    <% if (isLoggedIn) { %> <% if (user && user.userType === "guest") { %>
     <a
       href="/homes"
       class="<%= currentPage === 'Home' ? '!bg-teal-700 text-white':'hover:bg-teal-700' %> px-4 py-1.5"
       >Homes-List</a
     >
-    <a
-      href="/host/add-home"
-      class="<%= currentPage === 'addHome' ? '!bg-teal-700 text-white':'hover:!bg-teal-700 hover:text-white' %> px-4 py-1.5"
-      >Add Home</a
-    >
+
     <a
       href="/bookings"
       class="<%= currentPage === 'bookings' ? '!bg-teal-700 text-white':'hover:!bg-teal-700 hover:text-white' %> px-4 py-1.5"
@@ -26,22 +22,37 @@
       class="<%= currentPage === 'fav-list' ? '!bg-teal-700 text-white':'hover:!bg-teal-700 hover:text-white' %> px-4 py-1.5"
       >Favourite List</a
     >
+    <% } else { %>
+    <a
+      href="/host/add-home"
+      class="<%= currentPage === 'addHome' ? '!bg-teal-700 text-white':'hover:!bg-teal-700 hover:text-white' %> px-4 py-1.5"
+      >Add Home</a
+    >
     <a
       href="/host/host-home-list"
       class="<%= currentPage === 'host-homes' ? '!bg-teal-700 text-white':'hover:!bg-teal-700 hover:text-white' %> px-4 py-1.5"
       >Host Homes</a
     >
-    <% } %>
+    <% } %> <% } %>
   </div>
 
   <div>
     <% if (!isLoggedIn) { %>
-    <a
-      href="/auth/login"
-      class="px-6 py-2 !bg-purple-700 text-white duration-300 cursor-pointer rounded hover:!bg-purple-950"
-    >
-      Login
-    </a>
+    <div class="flex space-x-3 items-center">
+      <a
+        href="/auth/signup"
+        class="px-6 py-2 border border-purple-700 duration-300 cursor-pointer rounded hover:border-purple-950 hover:shadow-md hover:shadow-purple-950"
+      >
+        Sign Up
+      </a>
+
+      <a
+        href="/auth/login"
+        class="px-6 py-2 !bg-purple-700 text-white duration-300 cursor-pointer rounded hover:!bg-purple-950 hover:shadow-md hover:shadow-purple-950"
+      >
+        Login
+      </a>
+    </div>
     <% } else { %>
     <form action="/auth/logout" method="POST">
       <button
