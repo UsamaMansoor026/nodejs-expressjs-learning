@@ -1,7 +1,11 @@
-import { Flip, toast, ToastContainer } from "react-toastify";
+import { Route, Routes } from "react-router";
+import { Flip, ToastContainer } from "react-toastify";
+import Login from "../pages/Login";
+import Home from "../pages/Home";
+import Register from "../pages/Register";
 const App = () => {
   return (
-    <div className="text-pink-600">
+    <div>
       <ToastContainer
         position="bottom-right"
         autoClose={1500}
@@ -15,9 +19,13 @@ const App = () => {
         theme="colored"
         transition={Flip}
       />
-      <button type="button" onClick={() => toast.success("Yayyy")}>
-        Click for toast
-      </button>
+
+      {/* Routes */}
+      <Routes>
+        <Route index element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/home" element={<Home />} />
+      </Routes>
     </div>
   );
 };

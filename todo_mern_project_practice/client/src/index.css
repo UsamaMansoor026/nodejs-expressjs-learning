@@ -1,1 +1,6 @@
 @import "tailwindcss";
+
+main,
+section {
+  @apply bg-stone-800 text-stone-300;
+}
