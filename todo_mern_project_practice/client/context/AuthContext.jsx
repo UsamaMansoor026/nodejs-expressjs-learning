@@ -10,6 +10,7 @@ export const AuthContextProvider = ({ children }) => {
   const fetchCurrentUser = async () => {
     try {
       const response = await axios.get("http://localhost:3000/auth/user", {
+        headers: { "Content-Type": "application/json" },
         withCredentials: true,
       });
       if (response.data.success) {

@@ -8,13 +8,19 @@ const bodyParser = require("body-parser");
 const userRouter = require("./router/userRouter");
 const { connectDB } = require("./config/db");
 
+const MONGODB_URI = process.env.MONGO_DB_URI;
 const app = express();
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+    credentials: true,
+  })
+);
+
 app.use(bodyParser.json());
 app.use(cookieParser());
-app.use(cors({ credentials: true }));
 const PORT = 3000;
 
-const MONGODB_URI = process.env.MONGO_DB_URI;
 connectDB();
 
 const store = new MongoDBStore({
@@ -28,6 +34,11 @@ app.use(
     resave: false,
     saveUninitialized: false,
     store,
+    cookie: {
+      httpOnly: true,
+      secure: false,
+      sameSite: "lax",
+    },
   })
 );
 

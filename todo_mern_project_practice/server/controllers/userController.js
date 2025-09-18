@@ -30,8 +30,6 @@ exports.userRegister = [
         errors: errors.array(),
       });
     }
-
-    console.log("Form Data: ", req.body);
     const { userName, email, password } = req.body;
 
     const exists = await User.exists({ email });
@@ -69,8 +67,6 @@ exports.userLogin = [
 
   /* Main controller middleware - code */
   async (req, res) => {
-    console.log("Form Data: ", req.body);
-
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({
@@ -102,18 +98,13 @@ exports.userLogin = [
 ];
 
 exports.logout = (req, res) => {
-  const sessionId = req.sessionID; // log this if you want to debug
-
   req.session.destroy((err) => {
     if (err) {
       console.error("Failed to destroy session:", err);
       return res.status(500).json({ success: false, message: "Logout failed" });
     }
 
-    // Clear cookie (name must match express-session default or your custom name)
     res.clearCookie("connect.sid", { path: "/" });
-
-    console.log(`Session destroyed: ${sessionId}`);
     res.json({ success: true, message: "Logged out successfully" });
   });
 };
@@ -121,7 +112,7 @@ exports.logout = (req, res) => {
 exports.fetchCurrentUser = async (req, res) => {
   try {
     if (!req.session.user) {
-      return res.status(401).json({ loggedIn: false });
+      return res.json({ success: false });
     }
     res.json({ success: true, user: req.session.user });
   } catch (error) {

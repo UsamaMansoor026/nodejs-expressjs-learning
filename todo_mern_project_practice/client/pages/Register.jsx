@@ -24,7 +24,10 @@ const Register = () => {
     try {
       const response = await axios.post(
         "http://localhost:3000/auth/register",
-        formData
+        formData,
+        {
+          withCredentials: true,
+        }
       );
 
       if (!response.data.success) {

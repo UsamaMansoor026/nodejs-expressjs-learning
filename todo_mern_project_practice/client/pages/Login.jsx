@@ -39,8 +39,7 @@ const Login = () => {
       if (currentUser.data.success) {
         setUser(currentUser.data.user);
       }
-      console.log("User loggedin: ", response.data.user);
-      toast.success("User registered successfully");
+      toast.success("User Login successfully");
 
       navigate("/home");
     } catch (err) {
